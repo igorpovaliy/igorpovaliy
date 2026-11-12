@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b14">
+  <meta name="description" content="Получите 7 дней доступа к обучению вайбкодингу: создавайте сайты, упаковывайте соцсети и собирайте ИИ-помощников.">
+  <meta property="og:title" content="Вайбкодинг — создавай с ИИ">
+  <meta property="og:description" content="Подпишитесь на канал MAX и получите 7 дней доступа к обучению вайбкодингу.">
+  <title>Вайбкодинг — создавай с ИИ</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090b14;
+      --surface: #111522;
+      --surface-soft: #151a2a;
+      --text: #f5f6ff;
+      --muted: #a7aec4;
+      --line: rgba(195, 205, 255, .13);
+      --violet: #9b7bff;
+      --blue: #70dcff;
+      --lime: #d7fa77;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 75% 4%, rgba(86, 69, 173, .17), transparent 34rem),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    a:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+    .wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+    .topbar { border-bottom: 1px solid var(--line); }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 750; letter-spacing: -.03em; }
+    .brand-mark {
+      width: 34px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(215, 250, 119, .55);
+      border-radius: 11px;
+      color: var(--lime);
+      background: rgba(215, 250, 119, .08);
+      box-shadow: 0 0 24px rgba(215, 250, 119, .12);
+      font-size: 19px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a { color: var(--muted); font-size: 13px; text-decoration: none; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { padding: 10px 15px; border: 1px solid var(--line); border-radius: 999px; color: var(--text) !important; }
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1.04fr .96fr;
+      align-items: center;
+      gap: 32px;
+      padding-block: 74px 78px;
+      position: relative;
+    }
+    .hero-copy { position: relative; z-index: 1; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 760;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 15px var(--lime); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 680px;
+      margin: 22px 0 20px;
+      font-size: clamp(47px, 6.1vw, 76px);
+      line-height: .99;
+      letter-spacing: -.075em;
+      font-weight: 760;
+    }
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(100deg, #d7fa77 0%, #70dcff 48%, #ae8aff 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+    .hero-lead { max-width: 530px; margin-bottom: 27px; color: var(--muted); font-size: 17px; }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .button {
+      min-height: 53px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      padding: 0 21px;
+      border-radius: 12px;
+      background: var(--lime);
+      color: #14180a;
+      font-size: 14px;
+      font-weight: 780;
+      text-decoration: none;
+      box-shadow: 0 8px 34px rgba(215, 250, 119, .16);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(215, 250, 119, .25); }
+    .button svg { width: 17px; height: 17px; }
+    .microcopy { color: #858da7; font-size: 12px; }
+    .hero-note { margin: 17px 0 0; color: #858da7; font-size: 12px; }
+    .hero-note a { color: #c5cbdd; }
+    .webinar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 13px;
+      color: #c4b5ff;
+      font-size: 13px;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .webinar-link:hover { color: #e1d9ff; }
+    .webinar-link span { font-size: 16px; }
+    .hero-art {
+      min-height: 420px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      isolation: isolate;
+    }
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(112, 220, 255, .18), rgba(155, 123, 255, .18));
+      filter: blur(65px);
+      z-index: -1;
+    }
+    .orbit {
+      width: min(420px, 100%);
+      aspect-ratio: 1;
+      position: relative;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(177, 194, 255, .13);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(39, 43, 74, .44), rgba(14, 17, 29, .16) 68%, transparent 69%);
+    }
+    .orbit::before, .orbit::after {
+      content: "";
+      position: absolute;
+      inset: 9%;
+      border: 1px solid rgba(177, 194, 255, .1);
+      border-radius: 50%;
+    }
+    .orbit::after { inset: 20%; border-color: rgba(177, 194, 255, .08); }
+    .orb-core {
+      width: 150px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 42px;
+      color: #e8e5ff;
+      background: linear-gradient(145deg, rgba(150, 126, 255, .32), rgba(58, 76, 126, .28));
+      border: 1px solid rgba(197, 194, 255, .28);
+      box-shadow: 0 0 80px rgba(129, 111, 255, .2), inset 0 1px rgba(255,255,255,.14);
+      transform: rotate(-8deg);
+    }
+    .orb-core svg { width: 76px; height: 76px; transform: rotate(8deg); }
+    .float-card {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      border: 1px solid rgba(195, 205, 255, .16);
+      border-radius: 13px;
+      background: rgba(18, 22, 38, .88);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, .28);
+      backdrop-filter: blur(14px);
+      font-size: 12px;
+      animation: drift 5s ease-in-out infinite;
+    }
+    .float-card span:first-child { font-size: 18px; }
+    .float-one { top: 17%; right: 0; }
+    .float-two { bottom: 17%; left: -1%; animation-delay: -2.5s; }
+    .float-three { bottom: 10%; right: 7%; animation-delay: -1s; }
+    @keyframes drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    .trust-row {
+      padding: 24px 0;
+      border-block: 1px solid var(--line);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px 44px;
+      color: #c4c9d8;
+      font-size: 13px;
+    }
+    .trust-row span { display: inline-flex; align-items: center; gap: 8px; }
+    .check { color: var(--lime); font-weight: 800; }
+    .section { padding-block: 104px; }
+    .section-heading { max-width: 680px; margin: 0 auto 46px; text-align: center; }
+    .section-heading h2 {
+      margin: 14px 0 13px;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -.06em;
+    }
+    .section-heading p { color: var(--muted); }
+    .eyebrow.center { justify-content: center; }
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .card {
+      min-height: 210px;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(22, 27, 44, .9), rgba(15, 18, 30, .84));
+      transition: transform .22s ease, border-color .22s ease;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(155, 123, 255, .42); }
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 25px;
+      border: 1px solid rgba(155, 123, 255, .2);
+      border-radius: 13px;
+      background: rgba(155, 123, 255, .1);
+      font-size: 20px;
+    }
+    .card h3 { margin-bottom: 8px; font-size: 16px; letter-spacing: -.025em; }
+    .card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .journey {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 65px;
+      align-items: start;
+      padding: 54px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background:
+        radial-gradient(ellipse at 0% 100%, rgba(112, 220, 255, .08), transparent 50%),
+        linear-gradient(145deg, rgba(20, 25, 41, .98), rgba(15, 18, 30, .98));
+    }
+    .journey-intro { position: sticky; top: 30px; }
+    .journey-intro h2 { margin: 14px 0; font-size: clamp(32px, 4vw, 44px); line-height: 1.08; letter-spacing: -.06em; }
+    .journey-intro p { color: var(--muted); font-size: 14px; }
+    .journey-list { display: grid; gap: 0; }
+    .journey-item { display: grid; grid-template-columns: 48px 1fr; gap: 17px; padding: 0 0 26px; }
+    .journey-item:last-child { padding-bottom: 0; }
+    .day {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(112, 220, 255, .25);
+      border-radius: 14px;
+      color: var(--blue);
+      background: rgba(112, 220, 255, .07);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .journey-item h3 { margin: 1px 0 5px; font-size: 15px; }
+    .journey-item p { margin: 0; color: var(--muted); font-size: 13px; }
+    .gift { padding-top: 20px; }
+    .gift-panel {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 35px;
+      padding: 38px 44px;
+      position: relative;
+      border: 1px solid rgba(215, 250, 119, .24);
+      border-radius: 22px;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(215, 250, 119, .1), transparent 45%),
+        linear-gradient(120deg, #171d29, #111522);
+    }
+    .gift-panel::after {
+      content: "7";
+      position: absolute;
+      right: 32%;
+      top: -105px;
+      color: rgba(215, 250, 119, .045);
+      font-size: 330px;
+      font-weight: 850;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .gift-copy, .gift-action { position: relative; z-index: 1; }
+    .gift-copy h2 { margin: 13px 0 10px; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.1; letter-spacing: -.055em; }
+    .gift-copy p { max-width: 620px; margin: 0; color: var(--muted); font-size: 14px; }
+    .gift-action { min-width: 220px; text-align: center; }
+    .gift-action .button { width: 100%; }
+    .gift-action p { margin: 11px 0 0; color: #9299ad; font-size: 11px; }
+    .note {
+      max-width: 850px;
+      margin: 18px auto 0;
+      color: #9299ad;
+      font-size: 12px;
+      text-align: center;
+    }
+    .faq { max-width: 780px; margin: 0 auto; border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 21px 0;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 650;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--blue); font-size: 22px; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    details p { max-width: 680px; margin: -4px 0 20px; color: var(--muted); font-size: 14px; }
+    .final-cta { padding: 0 0 100px; text-align: center; }
+    .final-cta h2 { margin: 0 auto 15px; max-width: 650px; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -.06em; }
+    .final-cta p { margin-bottom: 24px; color: var(--muted); }
+    footer { border-top: 1px solid var(--line); }
+    .footer-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: #858da7;
+      font-size: 11px;
+    }
+    .footer-inner a { color: #b7bed1; text-decoration: none; }
+
+    @media (max-width: 900px) {
+      .hero { min-height: 560px; grid-template-columns: 1fr .8fr; gap: 8px; }
+      .hero-art { min-height: 340px; }
+      .orbit { width: 340px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .journey { gap: 36px; padding: 38px; }
+    }
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 36px, 520px); }
+      .nav { min-height: 65px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-cta { padding: 8px 12px; font-size: 11px !important; }
+      .hero { display: flex; flex-direction: column; align-items: stretch; gap: 10px; padding-block: 62px 52px; }
+      h1 { max-width: 550px; font-size: clamp(47px, 12vw, 66px); }
+      .hero-lead { font-size: 15px; }
+      .hero-art { min-height: 320px; margin-top: 2px; }
+      .orbit { width: min(320px, 84vw); }
+      .orb-core { width: 120px; border-radius: 34px; }
+      .orb-core svg { width: 62px; height: 62px; }
+      .float-card { padding: 9px 11px; font-size: 10px; }
+      .float-one { right: -3%; }
+      .float-two { left: -3%; }
+      .trust-row { justify-content: flex-start; gap: 12px 20px; font-size: 11px; }
+      .section { padding-block: 74px; }
+      .section-heading { margin-bottom: 30px; }
+      .cards { gap: 10px; }
+      .card { min-height: 200px; padding: 17px; }
+      .card-icon { margin-bottom: 19px; }
+      .card h3 { font-size: 14px; }
+      .card p { font-size: 12px; }
+      .journey { grid-template-columns: 1fr; gap: 29px; padding: 27px 22px; }
+      .journey-intro { position: static; }
+      .journey-item { grid-template-columns: 42px 1fr; gap: 12px; }
+      .day { width: 38px; height: 38px; }
+      .gift { padding-top: 0; }
+      .gift-panel { grid-template-columns: 1fr; gap: 25px; padding: 27px 22px; }
+      .gift-panel::after { right: -4%; top: -22px; font-size: 220px; }
+      .gift-action { width: 100%; text-align: left; }
+      .gift-action .button { width: 100%; }
+      .note { text-align: left; }
+      .final-cta { padding-bottom: 72px; }
+      .footer-inner { min-height: 85px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="wrap nav" aria-label="Основная навигация">
+      <a class="brand" href="#" aria-label="Вайбкодинг — на главную">
+        <span class="brand-mark" aria-hidden="true">✳</span>
+        <span>вайб<span class="gradient-text">/код</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#learn">Чему научитесь</a>
+        <a href="#path">План на 7 дней</a>
+        <a class="nav-cta" href="https://max.ru/channel_igorpovaliy" target="_blank" rel="noopener noreferrer">Канал в MAX ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <span class="eyebrow">7 дней, чтобы попробовать</span>
+        <h1 id="hero-title">Идея есть.<br>Код напишет <span class="gradient-text">ИИ.</span></h1>
+        <p class="hero-lead">Познакомьтесь с вайбкодингом и начните собирать свои проекты с нейросетями — даже если раньше вы не писали ни строчки кода.</p>
+        <div class="hero-actions">
+          <a class="button" href="https://max.ru/seosaler" target="_blank" rel="noopener noreferrer">
+            Получить подарок в MAX
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <span class="microcopy">Бесплатно · без обязательства покупать</span>
+        </div>
+        <p class="hero-note">Нет канала в MAX? В подарок — <a href="#gift">инструкция, как его создать.</a></p>
+        <a class="webinar-link" href="https://igjrpovaliy.goodly.pro/gw/room/vibecode245820" target="_blank" rel="noopener noreferrer">
+          Сначала посмотрите бесплатный вебинар <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit">
+          <div class="orb-core">
+            <svg viewBox="0 0 80 80" fill="none">
+              <path d="M26 25 12 40l14 15M54 25l14 15-14 15M46 17 34 63" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="40" cy="40" r="35" stroke="currentColor" stroke-opacity=".22"/>
+            </svg>
+          </div>
+          <div class="float-card float-one"><span>✦</span><span>Идея превращается в сайт</span></div>
+          <div class="float-card float-two"><span>◈</span><span>ИИ помогает писать код</span></div>
+          <div class="float-card float-three"><span>↗</span><span>Собирай своё</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap trust-row" aria-label="Что вы получите">
+      <span><b class="check">✓</b> 7 дней доступа</span>
+      <span><b class="check">✓</b> Можно начать без опыта</span>
+      <span><b class="check">✓</b> Инструкция по каналу MAX</span>
+      <span><b class="check">✓</b> Решение о покупке — за вами</span>
+    </div>
+
+    <section class="wrap section" id="learn">
+      <div class="section-heading">
+        <span class="eyebrow center">Не просто посмотреть</span>
+        <h2>Попробуйте сделать<br><span class="gradient-text">что-то своё</span></h2>
+        <p>Пошаговое обучение поможет пройти путь от идеи и запроса к нейросети до первых цифровых инструментов.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">⌘</div>
+          <h3>Собрать сайт</h3>
+          <p>Описать идею нейросети и собрать основу сайта без погружения в сложный код.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">▧</div>
+          <h3>Упаковать соцсети</h3>
+          <p>Подготовить оформление и контент, чтобы понятно рассказать о своём проекте.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">◉</div>
+          <h3>Освоить рекламу</h3>
+          <p>Разобраться, как подготовить материалы и настроить продвижение своего предложения.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">✳</div>
+          <h3>Создать ИИ-помощника</h3>
+          <p>Собрать помощника, который поддерживает ответы на вопросы и задачи продаж.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section" id="path">
+      <div class="journey">
+        <div class="journey-intro">
+          <span class="eyebrow">Пробный маршрут</span>
+          <h2>Семь дней.<br><span class="gradient-text">Ваш темп.</span></h2>
+          <p>Не марафон на скорость, а возможность открыть уроки, попробовать инструменты и понять, подходит ли вам такой формат.</p>
+        </div>
+        <div class="journey-list">
+          <article class="journey-item">
+            <div class="day">01</div>
+            <div><h3>Познакомьтесь с вайбкодингом</h3><p>Разберитесь, как формулировать задачу и обсуждать её с ИИ.</p></div>
+          </article>
+          <article class="journey-item">
+            <div class="day">02</div>
+            <div><h3>Начните свой первый проект</h3><p>Выберите идею и соберите её первые экран или прототип.</p></div>
+          </article>
+          <article class="journey-item">
+            <div class="day">03</div>
+            <div><h3>Оформите присутствие в сети</h3><p>Посмотрите, как связать сайт, соцсети и понятное предложение.</p></div>
+          </article>
+          <article class="journey-item">
+            <div class="day">04</div>
+            <div><h3>Изучите инструменты продвижения</h3><p>Познакомьтесь с материалами по рекламе и привлечению аудитории.</p></div>
+          </article>
+          <article class="journey-item">
+            <div class="day">05</div>
+            <div><h3>Попробуйте ИИ-помощника</h3><p>Изучите сценарии автоматизации общения и задач продаж.</p></div>
+          </article>
+          <article class="journey-item">
+            <div class="day">06</div>
+            <div><h3>Изучите модель перепродажи</h3><p>Узнайте, как устроены курсы с правами перепродажи и что разрешает лицензия.</p></div>
+          </article>
+          <article class="journey-item">
+            <div class="day">07</div>
+            <div><h3>Решите, что делать дальше</h3><p>Оцените материалы и примите самостоятельное решение о полном курсе.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section gift" id="gift">
+      <div class="gift-panel">
+        <div class="gift-copy">
+          <span class="eyebrow">Ваш подарок за подписку</span>
+          <h2>7 дней, чтобы войти<br>в мир вайбкодинга</h2>
+          <p>Подпишитесь на канал MAX и следуйте инструкции по активации доступа. Если у вас ещё нет своего канала MAX, в подарок добавлена инструкция по его созданию.</p>
+        </div>
+        <div class="gift-action">
+          <a class="button" href="https://max.ru/seosaler" target="_blank" rel="noopener noreferrer">
+            Перейти в канал MAX
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p>Бесплатный пробный доступ на 7 дней</p>
+        </div>
+      </div>
+      <p class="note">Внутри обучения есть бесплатные и платные уроки. Условия доступа и стоимость полного курса указаны на платформе Goodly.pro. Покупка курса и потенциальный доход от его перепродажи не гарантируются.</p>
+    </section>
+
+    <section class="wrap section" id="faq">
+      <div class="section-heading">
+        <span class="eyebrow center">Коротко о важном</span>
+        <h2>Частые вопросы</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Нужен ли опыт программирования?</summary>
+          <p>Нет. Начать можно без опыта: вы будете учиться объяснять задачу нейросети и шаг за шагом разбираться в результате.</p>
+        </details>
+        <details>
+          <summary>Что входит в подарок?</summary>
+          <p>Семь дней доступа к обучению и инструкция по созданию канала MAX, если у вас его ещё нет. Способ активации доступа будет указан в канале.</p>
+        </details>
+        <details>
+          <summary>Все уроки бесплатные?</summary>
+          <p>В обучении есть и бесплатные, и платные уроки. Условия и стоимость платных материалов показываются на платформе; покупать их не обязательно, чтобы изучить доступные бесплатные уроки.</p>
+        </details>
+        <details>
+          <summary>Можно ли перепродавать курс?</summary>
+          <p>Для курса заявлены права перепродажи. Перед продажей ознакомьтесь с лицензией на Goodly.pro: именно она определяет правила, условия и объём предоставленных прав. Доход от перепродажи не гарантируется.</p>
+        </details>
+        <details>
+          <summary>Что делать, если у меня ещё нет канала MAX?</summary>
+          <p>Подпишитесь на канал по кнопке выше: там будет инструкция, как быстро создать свой канал MAX.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="wrap final-cta">
+      <h2>Ваша следующая идея может стать <span class="gradient-text">первым проектом</span></h2>
+      <p>Начните с бесплатного доступа и посмотрите, подходит ли вам вайбкодинг.</p>
+      <a class="button" href="https://max.ru/seosaler" target="_blank" rel="noopener noreferrer">
+        Подписаться на MAX и получить подарок
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <a class="brand" href="#" aria-label="Вайбкодинг — на главную"><span class="brand-mark" aria-hidden="true">✳</span><span>вайб<span class="gradient-text">/код</span></span></a>
+      <span>Обучающий проект о вайбкодинге · <a href="https://max.ru/channel_igorpovaliy" target="_blank" rel="noopener noreferrer">Мы в MAX</a></span>
+    </div>
+  </footer>
+</body>
+</html>
